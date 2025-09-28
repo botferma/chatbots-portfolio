@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Чат-боты — Портфолио и услуги</title>
+  <title>Бот‑ферма — Портфолио и услуги</title>
   <meta name="description" content="Делаю чат-ботов под ключ: Telegram, WhatsApp, Instagram, веб-виджеты. Консультация бесплатно." />
-  <meta property="og:title" content="Чат-боты — Портфолио и услуги" />
+  <meta property="og:title" content="Бот‑ферма — Портфолио и услуги" />
   <meta property="og:description" content="Делаю чат-ботов под ключ: Telegram, WhatsApp, Instagram, веб-виджеты." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0ea5e9" />
@@ -13,13 +13,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0b1020; --panel:#111830; --muted:#94a3b8; --text:#e2e8f0;
-      --brand:#22d3ee; --brand2:#60a5fa; --radius:20px; --shadow:0 10px 30px rgb(0 0 0 / .3);
-    }
+    :root{ --bg:#0b1020; --panel:#111830; --muted:#94a3b8; --text:#e2e8f0; --brand:#22d3ee; --brand2:#60a5fa; --radius:20px; --shadow:0 10px 30px rgb(0 0 0 / .3); }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:radial-gradient(1200px 800px at 80% -10%, #1e293b40, transparent),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,ui-sans-serif}
-    a{color:inherit;text-decoration:none}
+    a{color:inherit;text-decoration:none;transition:all .25s ease}
     .wrap{max-width:1100px;margin:0 auto;padding:24px}
     header{position:sticky;top:0;backdrop-filter:saturate(130%) blur(10px);background:linear-gradient(180deg, rgba(11,16,32,.8), rgba(11,16,32,.3));z-index:10;border-bottom:1px solid #1f2a44}
     header .bar{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:14px 0}
@@ -27,14 +24,18 @@
     .logo svg{width:28px;height:28px}
     nav{display:flex;gap:16px;flex-wrap:wrap}
     nav a{opacity:.9;font-weight:600}
-    nav a:hover{opacity:1}
-    .cta{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#081018;font-weight:800;box-shadow:var(--shadow)}
+    nav a:hover{opacity:1;color:var(--brand)}
+    .cta{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#081018;font-weight:800;box-shadow:var(--shadow);cursor:pointer;transition:all .25s ease}
+    .cta:hover{filter:brightness(1.1);transform:translateY(-2px)}
+    .cta:active{transform:scale(0.96)}
 
     .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;padding:40px 0}
     .h1{font-size:44px;line-height:1.05;font-weight:800;letter-spacing:-.02em;margin:0}
     .lead{color:var(--muted);font-size:18px;margin:14px 0 22px}
     .badges{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
-    .badge{padding:8px 12px;border-radius:999px;background:#0f1730;border:1px solid #1f2a44;color:#cbd5e1;font-weight:600;display:inline-flex;align-items:center;gap:8px}
+    .badge{padding:8px 12px;border-radius:999px;background:#0f1730;border:1px solid #1f2a44;color:#cbd5e1;font-weight:600;display:inline-flex;align-items:center;gap:8px;transition:all .25s ease}
+    .badge:hover{background:#1a2442;color:#fff;border-color:var(--brand)}
+    .badge:active{transform:scale(0.95)}
     .badge svg{width:16px;height:16px}
 
     .hero-img{border-radius:var(--radius);overflow:hidden;box-shadow:none;}
@@ -44,13 +45,14 @@
     .panel{padding:20px}
 
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media (max-width:960px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:960px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1f r}}
     @media (max-width:640px){.h1{font-size:34px}.grid{grid-template-columns:1fr}}
 
-    .card{position:relative;overflow:hidden}
+    .card{position:relative;overflow:hidden;transition:all .25s ease}
+    .card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+    .card:active{transform:scale(0.97)}
     .card h3{margin:0 0 6px;font-size:18px}
     .card p{margin:0;color:#a8b3c7;font-size:14px}
-    .chip{position:absolute;top:12px;right:12px;font-size:12px;padding:6px 9px;border-radius:999px;background:#0b1328;border:1px solid #253355;color:#9fb3d9;font-weight:700}
 
     .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
     @media (max-width:960px){.steps{grid-template-columns:1fr 1fr}}
@@ -58,7 +60,9 @@
     .step h4{margin:10px 0 6px}
     .step p{margin:0;color:#a8b3c7;font-size:14px}
 
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid #243454;background:#0c1530;color:#cbd5e1;font-weight:600}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid #243454;background:#0c1530;color:#cbd5e1;font-weight:600;transition:all .25s ease}
+    .pill:hover{background:#1a2442;border-color:var(--brand);color:#fff}
+    .pill:active{transform:scale(0.95)}
     .stack{display:flex;flex-wrap:wrap;gap:10px}
 
     .price{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -68,197 +72,217 @@
 
     footer{margin:40px 0 10px;color:#94a3b8;font-size:14px;text-align:center}
     .split{display:flex;gap:10px;flex-wrap:wrap}
-    .ghost{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid #273659;background:#0b142e;color:#cbd5e1;font-weight:700}
+    .ghost{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;border:1px solid #273659;background:#0b142e;color:#cbd5e1;font-weight:700;justify-content:center;width:100%;transition:all .25s ease}
+    .ghost:hover{background:#1a2442;color:#fff;border-color:var(--brand)}
+    .ghost:active{transform:scale(0.95)}
     .ghost svg,.cta svg{width:16px;height:16px}
+
+    /* Modal */
+    .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:50}
+    .modal-content{background:var(--panel);padding:20px;border-radius:var(--radius);max-width:400px;width:90%;position:relative}
+    .modal-content h3{margin-top:0}
+    .modal-content label{display:block;margin:10px 0 4px}
+    .modal-content input,.modal-content select{width:100%;padding:8px;border-radius:8px;border:1px solid #253355;background:#0b142e;color:#cbd5e1}
+    .modal-buttons{display:flex;flex-direction:column;gap:10px;margin-top:24px}
+    .modal-buttons button,.modal-buttons a{width:100%;justify-content:center}
+    .confirmation{margin-top:12px;color:#22d3ee;font-weight:600;display:none;text-align:center}
+    .close-btn{position:absolute;top:10px;right:12px;background:none;border:none;color:#cbd5e1;font-size:20px;cursor:pointer;transition:all .25s ease}
+    .close-btn:hover{color:var(--brand)}
+    .close-btn:active{transform:scale(0.9)}
   </style>
 </head>
 <body>
   <header>
     <div class="wrap bar">
-      <div class="logo">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M12 2c5.523 0 10 3.806 10 8.5 0 2.565-1.5 4.86-3.86 6.35l.6 3.75-3.7-2.1c-1 .25-2.07.4-3.04.4C6.477 18.9 2 15.094 2 10.4 2 5.806 6.477 2 12 2Z" stroke="url(#g)" stroke-width="1.5"/>
-          <defs><linearGradient id="g" x1="0" y1="0" x2="24" y2="24"><stop stop-color="#22d3ee"/><stop offset="1" stop-color="#60a5fa"/></linearGradient></defs>
-        </svg>
-        <span>Чат‑боты</span>
-      </div>
+      <div class="logo">🤖 Бот‑ферма</div>
       <nav>
-        <a href="#work">Проекты</a>
-        <a href="#process">Как мы работаем</a>
-        <a href="#stack">Технологии</a>
-        <a href="#contact">Контакты</a>
+        <a href="#cases">Примеры</a>
+        <a href="#how">Как мы работаем</a>
+        <a href="#tech">Технологии</a>
+        <a href="#price">Стоимость</a>
+        <a href="#contacts">Контакты</a>
       </nav>
-      <a class="cta" href="#contact">Бесплатная консультация</a>
+      <div class="cta" id="openModal">Бесплатная консультация</div>
     </div>
   </header>
 
-  <main class="wrap">
-    <!-- HERO -->
-    <section class="hero">
-      <div>
-        <h1 class="h1">Создаем чат‑ботов для бизнеса и личных проектов</h1>
-        <p class="lead">Telegram, WhatsApp, Instagram (Direct) и веб‑виджеты. Быстрый прототип за 1–3 дня, интеграции с CRM, оплатой и Google Sheets.</p>
-        <div class="badges">
-          <span class="badge" title="Telegram">
-            <svg viewBox="0 0 24 24"><path d="M9.5 13.5 17.8 6.6c.3-.27.1-.76-.3-.66L3.7 9.3c-.47.13-.47.81 0 .95l4.7 1.37 1.83 5.8c.14.45.74.5.95.08l1.93-3.96 4.5 3.34c.37.27.9.07 1-.37l2.6-11.3c.12-.5-.36-.93-.83-.74L2.6 9.4c-.9.36-.87 1.67.04 1.98l5.1 1.75 1.46 4.7c.2.64 1.03.74 1.36.17l2.06-3.5" fill="#25A4E3"/></svg>
-            Telegram
-          </span>
-          <span class="badge" title="WhatsApp">
-            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 9.8 9.8 0 0 0 5.2-1.5l2.1.6-.6-2A9.8 9.8 0 0 0 22 12 10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" fill="#25D366"/><path d="M9.2 7.8c-.3-.6-.5-.6-.8-.6h-.6c-.2 0-.6.1-.9.5s-1.2 1.2-1.2 3 1.2 3.5 1.4 3.8 2.4 3.8 6 5c3 .9 3.6.7 4.3.6.7-.1 2.1-.8 2.4-1.8.3-1 .3-1.9.2-2-.1-.1-.3-.2-.7-.4s-2.1-1-2.4-1.1-.6-.2-.8.2-1 1.1-1.2 1.3-.4.2-.8 0-1.6-.6-3-1.9c-1.1-1-1.9-2.3-2.2-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.3-.6 0-.2 0-.5-.1-.6-.1-.1-.7-1.7-.9-2.3Z" fill="#25D366"/></svg>
-            WhatsApp
-          </span>
-          <span class="badge" title="Instagram">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="#E1306C"/><circle cx="12" cy="12" r="4.2" fill="#fff"/><circle cx="17.3" cy="6.7" r="1.2" fill="#fff"/></svg>
-            Instagram
-          </span>
-          <span class="badge" title="Viber">
-            <svg viewBox="0 0 24 24"><path d="M18.5 2H5.5A3.5 3.5 0 0 0 2 5.5v9A3.5 3.5 0 0 0 5.5 18H7l.7 3 3-3h7.8A3.5 3.5 0 0 0 22 14.5v-9A3.5 3.5 0 0 0 18.5 2Z" fill="#7360F2"/><path d="M9.5 6.5c-.3-.6-.5-.6-.8-.6h-.6c-.2 0-.6.1-.9.5s-1.2 1.2-1.2 3 1.2 3.5 1.4 3.8 2.4 3.8 6 5c3 .9 3.6.7 4.3.6.7-.1 2.1-.8 2.4-1.8.3-1 .3-1.9.2-2-.1-.1-.3-.2-.7-.4s-2.1-1-2.4-1.1-.6-.2-.8.2-1 1.1-1.2 1.3-.4.2-.8 0-1.6-.6-3-1.9c-1.1-1-1.9-2.3-2.2-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.3-.6 0-.2 0-.5-.1-.6-.1-.1-.7-1.7-.9-2.3Z" stroke="#fff" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>
-            Viber
-          </span>
-          <span class="badge" title="Web">
-            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 0c3.3 2.8 4.8 6.3 4.8 10S15.3 19.2 12 22m0 0C8.7 19.2 7.2 15.7 7.2 12S8.7 4.8 12 2m-9 10h18" stroke="#9fb3d9" fill="none" stroke-width="1.2"/></svg>
-            Web‑виджет
-          </span>
-        </div>
-        <div class="split">
-          <a class="cta" href="mailto:duskrider32@gmail.com?subject=Хочу%20чат-бота">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 4l10 7 10-7" stroke="currentColor" fill="none"/></svg>
-            Обсудить проект
-          </a>
-        </div>
+  <section class="wrap hero">
+    <div>
+      <h1 class="h1">Создаём чат‑ботов<br>для бизнеса и личных проектов</h1>
+      <p class="lead">Telegram, WhatsApp, Instagram, Viber и веб‑виджеты. Поддержка AI и интеграции.</p>
+      <div class="badges">
+        <span class="badge" title="Telegram">
+          <svg viewBox="0 0 24 24"><path d="M9.5 13.5 17.8 6.6c.3-.27.1-.76-.3-.66L3.7 9.3c-.47.13-.47.81 0 .95l4.7 1.37 1.83 5.8c.14.45.74.5.95.08l1.93-3.96 4.5 3.34c.37.27.9.07 1-.37l2.6-11.3c.12-.5-.36-.93-.83-.74L2.6 9.4c-.9.36-.87 1.67.04 1.98l5.1 1.75 1.46 4.7c.2.64 1.03.74 1.36.17l2.06-3.5" fill="#25A4E3"/></svg>
+          Telegram
+        </span>
+        <span class="badge" title="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 9.8 9.8 0 0 0 5.2-1.5l2.1.6-.6-2A9.8 9.8 0 0 0 22 12 10 10 0 0 0 12 2Zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z" fill="#25D366"/><path d="M9.2 7.8c-.3-.6-.5-.6-.8-.6h-.6c-.2 0-.6.1-.9.5s-1.2 1.2-1.2 3 1.2 3.5 1.4 3.8 2.4 3.8 6 5c3 .9 3.6.7 4.3.6.7-.1 2.1-.8 2.4-1.8.3-1 .3-1.9.2-2-.1-.1-.3-.2-.7-.4s-2.1-1-2.4-1.1-.6-.2-.8.2-1 1.1-1.2 1.3-.4.2-.8 0-1.6-.6-3-1.9c-1.1-1-1.9-2.3-2.2-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.3-.6 0-.2 0-.5-.1-.6-.1-.1-.7-1.7-.9-2.3Z" fill="#25D366"/></svg>
+          WhatsApp
+        </span>
+        <span class="badge" title="Instagram">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" ry="5" fill="#E1306C"/><circle cx="12" cy="12" r="4.2" fill="#fff"/><circle cx="17.3" cy="6.7" r="1.2" fill="#fff"/></svg>
+          Instagram
+        </span>
+        <span class="badge" title="Viber">
+          <svg viewBox="0 0 24 24"><path d="M18.5 2H5.5A3.5 3.5 0 0 0 2 5.5v9A3.5 3.5 0 0 0 5.5 18H7l.7 3 3-3h7.8A3.5 3.5 0 0 0 22 14.5v-9A3.5 3.5 0 0 0 18.5 2Z" fill="#7360F2"/><path d="M9.5 6.5c-.3-.6-.5-.6-.8-.6h-.6c-.2 0-.6.1-.9.5s-1.2 1.2-1.2 3 1.2 3.5 1.4 3.8 2.4 3.8 6 5c3 .9 3.6.7 4.3.6.7-.1 2.1-.8 2.4-1.8.3-1 .3-1.9.2-2-.1-.1-.3-.2-.7-.4s-2.1-1-2.4-1.1-.6-.2-.8.2-1 1.1-1.2 1.3-.4.2-.8 0-1.6-.6-3-1.9c-1.1-1-1.9-2.3-2.2-2.7-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.3-.6 0-.2 0-.5-.1-.6-.1-.1-.7-1.7-.9-2.3Z" stroke="#fff" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>
+          Viber
+        </span>
+        <span class="badge" title="Web">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 0c3.3 2.8 4.8 6.3 4.8 10S15.3 19.2 12 22m0 0C8.7 19.2 7.2 15.7 7.2 12S8.7 4.8 12 2m-9 10h18" stroke="#9fb3d9" fill="none" stroke-width="1.2"/></svg>
+          Веб‑виджет
+        </span>
       </div>
-      <div class="hero-img">
-        <!-- Положи файл рядом с index.html под именем hero-bot.png -->
-        <img src="hero-bot.png" alt="Иллюстрация чат‑ботов"/>
-      </div>
-    </section>
+      <a href="#cases" class="cta">Узнать больше</a>
+    </div>
+    <div class="hero-img">
+      <img src="hero-bot.png" alt="Hero image">
+    </div>
+  </section>
 
-    <!-- WORK -->
-    <section id="work" class="glass panel" style="margin-top:10px">
-      <h2 style="margin:0 0 10px">Примеры и сценарии</h2>
-      <div class="grid">
-        <div class="glass panel card">
-          <span class="chip">e‑commerce</span>
-          <h3>Интернет‑магазин в Telegram</h3>
-          <p>Бот автоматически публикует товары с сайта в канал, принимает заказы, собирает контактные данные и формирует заявку для менеджеров. <a href="https://t.me/+2eg-XmD29Ws1Mjli" target="_blank" rel="noopener">Пример канала</a></p>
-        </div>
-        <div class="glass panel card">
-          <span class="chip">media</span>
-          <h3>Медиа‑бот: сбор и публикация</h3>
-          <p>Бот анализирует источники, формирует статьи и посты, предлагает на утверждение, добавляет иллюстрации и публикует.</p>
-          <ul class="ul">
-            <li><a href="https://t.me/wunderkind_ai" target="_blank" rel="noopener">Журнал «Вундеркинд»</a></li>
-            <li><a href="https://t.me/snik_grott" target="_blank" rel="noopener">Сник и Гротт</a></li>
-            <li><a href="https://t.me/D_Ai_ly_Prophet" target="_blank" rel="noopener">Ежедневный пророк</a></li>
-            <li><a href="https://t.me/ai_lien_news" target="_blank" rel="noopener">Alien News</a></li>
-          </ul>
-        </div>
-        <div class="glass panel card">
-          <span class="chip">research</span>
-          <h3>Опросы и тестирования</h3>
-          <p>Интерактивные квизы и формы для сбора обратной связи и тестирования. Демобот: <a href="https://t.me/trezoriumbot" target="_blank" rel="noopener">@trezoriumbot</a>.</p>
-        </div>
-        <div class="glass panel card">
-          <h3>Онбординг и NPS</h3>
-          <p>Сценарии приветствия, сбор обратной связи, эскалация обращений.</p>
-        </div>
-        <div class="glass panel card">
-          <h3>Интеграции</h3>
-          <p>CRM (HubSpot/Bitrix/AMO), Google Sheets, Webhooks/API, платежи.</p>
-        </div>
-        <div class="glass panel card">
-          <h3>AI‑фичи</h3>
-          <p>Суммаризация, поиск по базе знаний, классификация сообщений.</p>
-        </div>
+  <section id="cases" class="wrap glass panel" style="margin-top:10px">
+    <h2 style="margin:0 0 10px">Примеры и сценарии</h2>
+    <div class="grid">
+      <div class="glass panel card">
+        <h3>Интернет‑магазин в Telegram</h3>
+        <p>Бот автоматически публикует товары с сайта в канал, принимает заказы, собирает контактные данные и формирует заявку для менеджеров. <a href="https://t.me/+2eg-XmD29Ws1Mjli" target="_blank" rel="noopener">Пример канала</a></p>
       </div>
-    </section>
+      <div class="glass panel card">
+        <h3>Медиа‑бот: сбор и публикация</h3>
+        <p>Бот анализирует источники, формирует статьи и посты, предлагает на утверждение, добавляет иллюстрации и публикует. Кейсы:</p>
+        <ul class="ul">
+          <li><a href="https://t.me/wunderkind_ai" target="_blank" rel="noopener">Журнал «Вундеркинд»</a></li>
+          <li><a href="https://t.me/snik_grott" target="_blank" rel="noopener">Сник и Гротт</a></li>
+          <li><a href="https://t.me/D_Ai_ly_Prophet" target="_blank" rel="noopener">Ежедневный пророк</a></li>
+          <li><a href="https://t.me/ai_lien_news" target="_blank" rel="noopener">Alien News</a></li>
+        </ul>
+      </div>
+      <div class="glass panel card">
+        <h3>Опросы и тестирования</h3>
+        <p>Интерактивные квизы и формы для сбора обратной связи и тестирования. Демобот: <a href="https://t.me/trezoriumbot" target="_blank" rel="noopener">@trezoriumbot</a>.</p>
+      </div>
+      <div class="glass panel card">
+        <h3>Онбординг и NPS</h3>
+        <p>Сценарии приветствия, сбор обратной связи, эскалация обращений.</p>
+      </div>
+      <div class="glass panel card">
+        <h3>Интеграции</h3>
+        <p>CRM (HubSpot/Bitrix/AMO), Google Sheets, Webhooks/API, платежи.</p>
+      </div>
+      <div class="glass panel card">
+        <h3>AI‑фичи</h3>
+        <p>Суммаризация, поиск по базе знаний, классификация сообщений.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- PROCESS -->
-    <section id="process" class="glass panel" style="margin-top:10px">
-      <h2 style="margin:0 0 10px">Как мы работаем</h2>
-      <div class="steps">
-        <div class="glass panel step">
-          <div class="pill">1. Бриф (30–45 мин)</div>
-          <h4>Цели и сценарии</h4>
-          <p>Фиксируем аудиторию, каналы, KPI и интеграции.</p>
-        </div>
-        <div class="glass panel step">
-          <div class="pill">2. Прототип</div>
-          <h4>Быстрая проверка гипотез</h4>
-          <p>Демонстрация флоу в тестовом боте.</p>
-        </div>
-        <div class="glass panel step">
-          <div class="pill">3. Запуск</div>
-          <h4>Прод и мониторинг</h4>
-          <p>Логи, алерты, аналитика, роли доступа.</p>
-        </div>
-        <div class="glass panel step">
-          <div class="pill">4. Рост</div>
-          <h4>Итерации</h4>
-          <p>AB‑тесты, автоматизация, новые источники трафика.</p>
-        </div>
-      </div>
-    </section>
+  <section id="how" class="wrap">
+    <h2>Как мы работаем</h2>
+    <div class="steps">
+      <div class="glass panel step"><h4>1. Обсуждение</h4><p>Формируем задачу и сценарий.</p></div>
+      <div class="glass panel step"><h4>2. Дизайн</h4><p>Прототипы диалогов и интерфейсов.</p></div>
+      <div class="glass panel step"><h4>3. Разработка</h4><p>Код, интеграции, тесты.</p></div>
+      <div class="glass panel step"><h4>4. Запуск</h4><p>Подключаем к платформе и сопровождаем.</p></div>
+    </div>
+  </section>
 
-    <!-- STACK -->
-    <section id="stack" class="glass panel" style="margin-top:10px">
-      <h2 style="margin:0 0 10px">Технологии</h2>
-      <div class="stack">
-        <span class="pill">Python / Node.js</span>
-        <span class="pill">Telegram Bot API</span>
-        <span class="pill">python‑telegram‑bot / aiogram / Telethon</span>
-        <span class="pill">Webhook / REST</span>
-        <span class="pill">AWS / Cloudflare</span>
-        <span class="pill">Supabase / MongoDB</span>
-        <span class="pill">Google Sheets / Apps Script</span>
-      </div>
-    </section>
+  <section id="tech" class="wrap">
+    <h2>Технологии</h2>
+    <div class="stack">
+      <div class="pill">Python</div>
+      <div class="pill">Node.js</div>
+      <div class="pill">Telegram Bot API</div>
+      <div class="pill">WhatsApp Business</div>
+      <div class="pill">Instagram API</div>
+      <div class="pill">Viber API</div>
+      <div class="pill">AI Integrations</div>
+      <div class="pill">Google Sheets / Apps Script</div>
+      <div class="pill">Webhooks / REST</div>
+      <div class="pill">Supabase / MongoDB</div>
+    </div>
+  </section>
 
-    <!-- PRICING -->
-    <section id="pricing" class="glass panel" style="margin-top:10px">
-      <h2 style="margin:0 0 10px">Стоимость</h2>
-      <div class="price">
-        <div class="glass panel">
-          <h3>Старт</h3>
-          <p style="font-weight:800">Бесплатно</p>
-          <ul class="ul">
-            <li>Консультация 20–30 минут</li>
-            <li>Аудит идеи или текущего бота</li>
-            <li>План запуска и сроки</li>
-          </ul>
-        </div>
-        <div class="glass panel">
-          <h3>Индивидуальный расчёт</h3>
-          <ul class="ul">
-            <li>Подбор оптимального решения под задачу</li>
-            <li>Интеграции (CRM, Sheets и др.)</li>
-            <li>Развёртывание, тестирование, аналитика</li>
-          </ul>
-        </div>
+  <section id="price" class="wrap">
+    <h2>Стоимость</h2>
+    <div class="price">
+      <div class="glass panel">
+        <h3>Старт</h3>
+        <p>Бесплатная консультация и базовый прототип.</p>
+        <ul class="ul">
+          <li>Консультация 20–30 минут</li>
+          <li>Аудит идеи или текущего бота</li>
+          <li>План запуска и сроки</li>
+        </ul>
       </div>
-    </section>
+      <div class="glass panel">
+        <h3>Индивидуальный расчёт</h3>
+        <ul class="ul">
+          <li>Подбор оптимального решения под задачу</li>
+          <li>Интеграции (CRM, Sheets и др.)</li>
+          <li>Развёртывание, тестирование, аналитика</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="glass panel" style="margin-top:10px">
-      <h2 style="margin:0 0 10px">Контакты</h2>
-      <p class="lead">Напишите пару строк о задаче: канал, цель, сроки. Ответим в течение дня.</p>
-      <div class="split">
-        <a class="cta" href="https://t.me/naverhoo" target="_blank" rel="noopener">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 13.5 17.8 6.6c.3-.27.1-.76-.3-.66L3.7 9.3c-.47.13-.47.81 0 .95l4.7 1.37 1.83 5.8c.14.45.74.5.95.08l1.93-3.96 4.5 3.34c.37.27.9.07 1-.37l2.6-11.3c.12-.5-.36-.93-.83-.74L2.6 9.4c-.9.36-.87 1.67.04 1.98l5.1 1.75 1.46 4.7c.2.64 1.03.74 1.36.17l2.06-3.5" fill="currentColor"/></svg>
-          Написать в Telegram
-        </a>
-        <a class="ghost" href="mailto:duskrider32@gmail.com?subject=Про%20чат-бота">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2 4l10 7 10-7v14H2z" fill="currentColor"/></svg>
-          Отправить Email
-        </a>
-      </div>
-    </section>
-  </main>
+  <section id="contacts" class="wrap">
+    <h2>Контакты</h2>
+    <p>Напишите пару строк о задаче: канал, цель, сроки. Ответим в течение дня.</p>
+    <div class="split">
+      <a class="ghost" href="https://t.me/naverhoo" target="_blank">Написать в Telegram</a>
+      <a class="ghost" href="mailto:duskrider32@gmail.com">Отправить Email</a>
+    </div>
+  </section>
 
   <footer>
-    © <span id="y"></span> Чат‑боты • Сделано с любовью к автоматизации
+    © 2025 Бот‑ферма. Все права защищены.
   </footer>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <button class="close-btn" id="closeModal" aria-label="Закрыть">×</button>
+      <h3>Оставьте заявку</h3>
+      <form id="consultForm">
+        <label for="name">Имя</label>
+        <input type="text" id="name" name="name" required>
+        <label for="contactType">Способ связи</label>
+        <select id="contactType" name="contactType" required>
+          <option value="">Выберите...</option>
+          <option value="phone">Телефон</option>
+          <option value="email">Email</option>
+          <option value="telegram">Telegram</option>
+          <option value="viber">Viber</option>
+          <option value="whatsapp">WhatsApp</option>
+        </select>
+        <label for="contact">Контактная информация</label>
+        <input type="text" id="contact" name="contact" required>
+        <div class="modal-buttons">
+          <button type="submit" class="cta">Отправить заявку</button>
+          <a class="ghost" href="https://t.me/naverhoo" target="_blank">Написать в Telegram</a>
+          <a class="ghost" href="mailto:duskrider32@gmail.com">Отправить Email</a>
+        </div>
+        <div class="confirmation" id="confirmationMsg">Спасибо! Мы свяжемся с вами.</div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal=document.getElementById('modal');
+    const openModal=document.getElementById('openModal');
+    const closeModal=document.getElementById('closeModal');
+    const form=document.getElementById('consultForm');
+    const confirmation=document.getElementById('confirmationMsg');
+
+    openModal.onclick=()=>{modal.style.display='flex'}
+    closeModal.onclick=()=>{modal.style.display='none'}
+    window.onclick=(e)=>{if(e.target===modal){modal.style.display='none'}}
+    window.addEventListener('keydown',(e)=>{if(e.key==='Escape') modal.style.display='none'});
+
+    form.onsubmit=(e)=>{
+      e.preventDefault();
+      confirmation.style.display='block';
+      form.reset();
+      setTimeout(()=>{modal.style.display='none';confirmation.style.display='none'},2000);
+    }
+  </script>
 </body>
 </html>
